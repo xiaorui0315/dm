@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"gitee.com/chunanyong/dm/util"
+	"github.com/xiaorui0315/dm/util"
 )
 
 const (

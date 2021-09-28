@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"time"
 
-	"gitee.com/chunanyong/dm/util"
+	"github.com/xiaorui0315/dm/util"
 )
 
 const SQL_GET_DSC_EP_SITE = "SELECT " +
