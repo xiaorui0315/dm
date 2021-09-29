@@ -439,6 +439,9 @@ func (column *column) getColumnData(bytes []byte, conn *DmConnection) (driver.Va
 		if err != nil {
 			return nil, err
 		}
+		if length == 0 {
+			return "", nil
+		}
 		return clob.ReadString(1, int(length))
 	}
 
