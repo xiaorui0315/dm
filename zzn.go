@@ -434,8 +434,12 @@ func (column *column) getColumnData(bytes []byte, conn *DmConnection) (driver.Va
 	case CHAR, VARCHAR2, VARCHAR:
 		return Dm_build_1219.Dm_build_1376(bytes, 0, len(bytes), conn.getServerEncoding(), conn), nil
 	case CLOB:
-		return Dm_build_1219.Dm_build_1376(bytes, 0, len(bytes), conn.getServerEncoding(), conn), nil
-		//return DB2G.toDmClob(bytes, conn, column), nil
+		clob := DB2G.toDmClob(bytes, conn, column)
+		length, err := clob.GetLength()
+		if err != nil {
+			return nil, err
+		}
+		return clob.ReadString(1, int(length))
 	}
 
 	return string(bytes), nil
